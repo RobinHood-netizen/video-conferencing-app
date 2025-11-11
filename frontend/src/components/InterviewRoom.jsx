@@ -21,7 +21,8 @@ export default function InterviewRoom({ roomId, myUserId, onLeave }) {
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
-    const socket = io(SIGNALING);
+    // Simple WebRTC without Socket.io for Vercel compatibility
+    console.log('Starting WebRTC connection...');
     socketRef.current = socket;
     const pc = new RTCPeerConnection({ 
       iceServers: [
