@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { io } from 'socket.io-client';
 
-const SIGNALING = process.env.NODE_ENV === 'production' 
-  ? 'https://your-backend.vercel.app' 
-  : window.location.hostname === 'localhost' 
-    ? 'http://localhost:3001' 
+const SIGNALING = process.env.NODE_ENV === 'production'
+  ? process.env.REACT_APP_BACKEND_URL || 'https://video-conferencing-app-puk8.vercel.app'
+  : window.location.hostname === 'localhost'
+    ? 'http://localhost:3001'
     : `http://${window.location.hostname}:3001`;
 
 export default function InterviewRoom({ roomId, myUserId, onLeave }) {
