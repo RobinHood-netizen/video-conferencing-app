@@ -7,6 +7,8 @@ const SIGNALING = window.location.hostname.includes('vercel.app')
     ? 'http://localhost:3001'
     : `http://${window.location.hostname}:3001`;
 
+console.log('Using signaling URL:', SIGNALING);
+
 export default function InterviewRoom({ roomId, myUserId, onLeave }) {
   const localRef = useRef(null);
   const remoteRef = useRef(null);

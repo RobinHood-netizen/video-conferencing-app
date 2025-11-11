@@ -15,10 +15,12 @@ export default function Scheduler({ onJoinRoom }) {
   const createInterview = async () => {
     try {
       const backendUrl = window.location.hostname.includes('vercel.app')
-        ? 'https://video-conferencing-app-puk8.vercel.app'
+        ? 'https://YOUR_NEW_BACKEND_URL.vercel.app'
         : window.location.hostname === 'localhost'
           ? 'http://localhost:3001'
           : `http://${window.location.hostname}:3001`;
+      
+      console.log('Using backend URL:', backendUrl);
       const response = await axios.post(`${backendUrl}/api/interviews`, interviewData);
       setCreatedInterview(response.data);
       setRoomId(response.data.id);

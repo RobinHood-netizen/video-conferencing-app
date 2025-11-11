@@ -94,7 +94,11 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(PORT, '0.0.0.0', () => {
-  console.log(`Backend + signaling server listening on http://localhost:${PORT}`);
-  console.log(`Network access: http://YOUR_IP:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  server.listen(PORT, '0.0.0.0', () => {
+    console.log(`Backend + signaling server listening on http://localhost:${PORT}`);
+    console.log(`Network access: http://YOUR_IP:${PORT}`);
+  });
+}
+
+module.exports = app;
