@@ -17,11 +17,12 @@ export default function Scheduler({ onJoinRoom }) {
       const backendUrl = window.location.hostname.includes('vercel.app')
         ? 'https://YOUR_NEW_BACKEND_URL.vercel.app/api'
         : window.location.hostname === 'localhost'
-          ? 'http://localhost:3001/api'
-          : `http://${window.location.hostname}:3001/api`;
+          ? 'http://localhost:3001'
+          : `http://${window.location.hostname}:3001`;
       
       console.log('Using backend URL:', backendUrl);
-      const response = await axios.post(`${backendUrl}/interviews`, interviewData);
+      const apiPath = window.location.hostname.includes('vercel.app') ? '/interviews' : '/api/interviews';
+      const response = await axios.post(`${backendUrl}${apiPath}`, interviewData);
       setCreatedInterview(response.data);
       setRoomId(response.data.id);
     } catch (error) {
