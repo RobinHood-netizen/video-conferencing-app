@@ -14,8 +14,8 @@ export default function Scheduler({ onJoinRoom }) {
 
   const createInterview = async () => {
     try {
-      const backendUrl = process.env.NODE_ENV === 'production'
-        ? process.env.REACT_APP_BACKEND_URL || 'https://video-conferencing-app-puk8.vercel.app'
+      const backendUrl = window.location.hostname.includes('vercel.app')
+        ? 'https://video-conferencing-app-puk8.vercel.app'
         : window.location.hostname === 'localhost'
           ? 'http://localhost:3001'
           : `http://${window.location.hostname}:3001`;
